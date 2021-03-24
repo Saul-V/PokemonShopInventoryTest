@@ -20,10 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding ui;
 
-    //ArrayAdapter adapterArray = null;
     ItemAdapter adapterArray;
     ArrayList<Item> itemsList = new ArrayList<>();
-    ListView listView;
     PokeApi pokeApi = new PokeApiClient();
 
 
@@ -33,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         ui = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(ui.getRoot());
 
-        listView = findViewById(R.id.listObjects);
 
 
 
@@ -61,24 +58,13 @@ public class MainActivity extends AppCompatActivity {
         itemsList.add(tenth);
         itemsList.add(eleventh);
 
-//        itemsList.add("Super Potion");
-//        itemsList.add("Hyper Potion");
-//        itemsList.add("X Attack");
-//        itemsList.add("X Defend");
-//        itemsList.add("X Sp. Atk");
-//        itemsList.add("X Sp. Def");
-//        itemsList.add("X Speed");
-//        itemsList.add("Revive");
-//        itemsList.add("Ether");
-//        itemsList.add("Elixer");
-//        itemsList.add("PP UP");
 
         adapterArray = new ItemAdapter(this, R.layout.list_object_layout, itemsList);
 
 
+        ui.listObjects.setAdapter(adapterArray);
 
-        listView.setAdapter(adapterArray);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        ui.listObjects.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
